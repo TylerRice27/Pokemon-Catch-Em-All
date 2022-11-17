@@ -12,8 +12,8 @@ class PokemonsService {
         let activePokemon = appState.activePokemon
         const res = await api.post('', activePokemon)
         console.log("catch poke", res.data);
-        appState.myPokemons.push(res.data)
-        console.log(appState.myPokemons);
+        appState.myPokemons.unshift()
+        console.log("is this in my appsate", appState.myPokemons);
 
     }
     async setActive(name) {

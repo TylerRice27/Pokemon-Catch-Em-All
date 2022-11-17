@@ -29,6 +29,7 @@ export class PokemonsController {
         appState.on('activePokemon', _drawActive)
         appState.on('myPokemons', _drawMyPokemon)
         this.getPokemons()
+        this.getMyPokemons()
     }
 
 
@@ -44,6 +45,7 @@ export class PokemonsController {
     async getMyPokemons() {
 
         try {
+            debugger
             await pokemonsService.getMyPokemons()
         } catch (error) {
             console.error(error)
