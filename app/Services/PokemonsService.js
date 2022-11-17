@@ -3,6 +3,12 @@ import { PokeApiPokemon } from "../Models/PokeApiPokemon.js";
 import { api, pokemonApi } from "./AxiosService.js"
 
 class PokemonsService {
+    async letGo() {
+        const pokemon = appState.activePokemon
+        const res = await api.delete(pokemon.name)
+        console.log("delete pokemon", res.data);
+        appState.myPokemons = appState.myPokemons.filter(p => p.name != p.name)
+    }
     async getMyPokemons() {
         const res = await api.get()
         console.log("get my poke", res.data);

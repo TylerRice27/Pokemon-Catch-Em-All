@@ -30,6 +30,14 @@ export class PokemonsController {
         appState.on('myPokemons', _drawMyPokemon)
         this.getPokemons()
         this.getMyPokemons()
+        // this.playAudio()
+
+    }
+
+    playAudio() {
+        // window.onload = document.getElementById("poke-audio").play()
+        // let audio = new Audio('../assets/1-01. Opening.mp3')
+        // audio.play()
     }
 
 
@@ -45,7 +53,6 @@ export class PokemonsController {
     async getMyPokemons() {
 
         try {
-            debugger
             await pokemonsService.getMyPokemons()
         } catch (error) {
             console.error(error)
@@ -56,6 +63,8 @@ export class PokemonsController {
     async setActive(pokemon) {
         try {
             await pokemonsService.setActive(pokemon)
+            // let audio = new Audio('../assets/1-01. Opening.mp3')
+            // audio.play()
         } catch (error) {
             console.error(error)
             Pop.toast(error.message, 'error')
@@ -65,6 +74,15 @@ export class PokemonsController {
     async catchPoke() {
         try {
             await pokemonsService.catchPoke()
+        } catch (error) {
+            console.error(error)
+            Pop.toast(error.message, 'error')
+        }
+    }
+
+    async letGo() {
+        try {
+            await pokemonsService.letGo()
         } catch (error) {
             console.error(error)
             Pop.toast(error.message, 'error')
