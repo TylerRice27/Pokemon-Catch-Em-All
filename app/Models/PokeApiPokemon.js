@@ -9,7 +9,6 @@ export class PokeApiPokemon {
 
     get Template() {
         return `
-        
         <button class="btn btn-danger m-1">${this.name}</button>`
     }
 
@@ -17,10 +16,12 @@ export class PokeApiPokemon {
 
     get ActiveTemplate() {
         return `
-         <img src="${this.img}">
-          <h2>${this.name}</h2>
-          <h5>${this.TypesOut}</h5>
-          <h5>${this.FormatAbility}</h5>
+        <div class="text-center">
+            <img class="poke-main" src="${this.img}">
+            <h2 class="text-light">Name: ${this.name}</h2>
+            <h5 class="text-light">Type: ${this.TypesOut}</h5>
+            <h5 class="text-light">Abilities: ${this.FormatAbility}</h5>
+        </div>
         `
     }
 
