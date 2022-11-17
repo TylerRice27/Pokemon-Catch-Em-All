@@ -11,9 +11,15 @@ function _drawPokemons() {
     setHTML('poke-list', template)
 }
 
+function _drawActive() {
+    let pokemon = appState.activePokemon
+    setHTML('active-poke', pokemon.ActiveTemplate)
+}
+
 export class PokemonsController {
     constructor() {
         appState.on('pokemons', _drawPokemons)
+        appState.on('activePokemon', _drawActive)
         this.getPokemons()
     }
 
