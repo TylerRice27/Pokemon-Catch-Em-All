@@ -11,6 +11,7 @@ class AppState extends EventEmitter {
 
   activePokemon = null
 
+  myPokemons = []
 }
 
 export const appState = new Proxy(new AppState(), {

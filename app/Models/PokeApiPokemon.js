@@ -21,6 +21,7 @@ export class PokeApiPokemon {
             <h2 class="text-light">Name: ${this.name}</h2>
             <h5 class="text-light">Type: ${this.TypesOut}</h5>
             <h5 class="text-light">Abilities: ${this.FormatAbility}</h5>
+            <button onclick="app.pokemonsController.catchPoke()" class="btn btn-danger">Catch!</button>
         </div>
         `
     }

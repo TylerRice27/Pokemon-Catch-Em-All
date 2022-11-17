@@ -1,8 +1,21 @@
 import { appState } from "../AppState.js";
 import { PokeApiPokemon } from "../Models/PokeApiPokemon.js";
-import { pokemonApi } from "./AxiosService.js"
+import { api, pokemonApi } from "./AxiosService.js"
 
 class PokemonsService {
+    async getMyPokemons() {
+        const res = await api.get()
+        console.log("get my poke", res.data);
+        appState.myPokemons = res.data
+    }
+    async catchPoke() {
+        let activePokemon = appState.activePokemon
+        const res = await api.post('', activePokemon)
+        console.log("catch poke", res.data);
+        appState.myPokemons.push(res.data)
+        console.log(appState.myPokemons);
+
+    }
     async setActive(name) {
         const res = await pokemonApi.get(`pokemon/${name}`)
         console.log("Get this pokemon", res.data);
