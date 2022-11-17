@@ -19,7 +19,7 @@ function _drawActive() {
 function _drawMyPokemon() {
     let myPoke = appState.myPokemons
     let template = ''
-    myPoke.forEach(p => template += `<button onclick="app.pokemonsController.setActive('${p.name}')" class="btn btn-danger rounded m-2 p-3">${p.name}</button>`)
+    myPoke.forEach(p => template += `<button onclick="app.pokemonsController.setMyActive('${p.id}')" class="btn btn-danger rounded m-2 p-3">${p.name}</button>`)
     setHTML('my-list', template)
 }
 
@@ -69,6 +69,11 @@ export class PokemonsController {
             console.error(error)
             Pop.toast(error.message, 'error')
         }
+    }
+
+    setMyActive(id) {
+
+        pokemonsService.setMyActive(id)
     }
 
     async catchPoke() {

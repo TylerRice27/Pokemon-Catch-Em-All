@@ -3,22 +3,31 @@ import { PokeApiPokemon } from "../Models/PokeApiPokemon.js";
 import { api, pokemonApi } from "./AxiosService.js"
 
 class PokemonsService {
+    setMyActive(id) {
+        console.log(id);
+        let activePoke = appState.myPokemons.find(p => p.id == id)
+        console.log(activePoke);
+        appState.activePokemon = activePoke
+
+    }
     async letGo() {
         const pokemon = appState.activePokemon
-        const res = await api.delete(pokemon.name)
+        console.log(pokemon.id);
+        const res = await api.delete('' + pokemon.id)
         console.log("delete pokemon", res.data);
-        appState.myPokemons = appState.myPokemons.filter(p => p.name != p.name)
+        appState.myPokemons = appState.myPokemons.filter(p => p.id != p.id)
     }
     async getMyPokemons() {
         const res = await api.get()
         console.log("get my poke", res.data);
-        appState.myPokemons = res.data
+        appState.myPokemons = res.data.map(p => new PokeApiPokemon(p))
     }
     async catchPoke() {
         let activePokemon = appState.activePokemon
         const res = await api.post('', activePokemon)
         console.log("catch poke", res.data);
-        appState.myPokemons.unshift()
+        // appState.myPokemons.unshift()
+        appState.myPokemons = [...appState.myPokemons, new PokeApiPokemon(res.data)]
         console.log("is this in my appsate", appState.myPokemons);
 
     }

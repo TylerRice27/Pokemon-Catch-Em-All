@@ -3,11 +3,10 @@ import { generateId } from "../Utils/generateId.js"
 
 export class PokeApiPokemon {
     constructor(data) {
-        this.id = generateId() || data.id || ''
+        this.id = typeof data.id == 'number' ? '' : data.id
         this.name = data.name
         this.type = data.types
-        this.img = data.sprites.back_default
-        this.ability = data.abilities
+        this.img = data.img || data.sprites.front_default
     }
 
 
@@ -25,7 +24,6 @@ export class PokeApiPokemon {
             <img class="poke-main" src="${this.img}">
             <h2 class="text-light">Name: ${this.name}</h2>
             <h5 class="text-light">Type: ${this.TypesOut}</h5>
-            <h5 class="text-light">Abilities: ${this.FormatAbility}</h5>
             ${this.ComputeButtons}
         </div>
      
@@ -46,12 +44,12 @@ export class PokeApiPokemon {
         }
     }
 
-
-    get FormatAbility() {
-        let template = ''
-        this.ability.forEach(a => template += a.ability.name)
-        return template
-    }
+    // NOTE Codeworks Dont support abilites
+    // get FormatAbility() {
+    //     let template = ''
+    //     this.ability.forEach(a => template += a.ability.name)
+    //     return template
+    // }
 
 
 }
