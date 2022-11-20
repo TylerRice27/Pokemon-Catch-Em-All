@@ -6,7 +6,7 @@ export class PokeApiPokemon {
         this.id = typeof data.id == 'number' ? '' : data.id
         this.name = data.name
         this.type = data.types
-        this.img = data.img || data.sprites.front_default
+        this.img = data.img || data.sprites.other.home.front_default
     }
 
 

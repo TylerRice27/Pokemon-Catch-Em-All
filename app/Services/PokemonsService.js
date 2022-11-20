@@ -15,7 +15,8 @@ class PokemonsService {
         console.log(pokemon.id);
         const res = await api.delete('' + pokemon.id)
         console.log("delete pokemon", res.data);
-        appState.myPokemons = appState.myPokemons.filter(p => p.id != p.id)
+        appState.myPokemons = appState.myPokemons.filter(p => p.id != pokemon.id)
+        appState.activePokemon = ''
     }
     async getMyPokemons() {
         const res = await api.get()
