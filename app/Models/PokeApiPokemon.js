@@ -10,10 +10,10 @@ export class PokeApiPokemon {
     }
 
 
-    get Template() {
-        return `
-        <button class="btn btn-danger m-1">${this.name}</button>`
-    }
+    // get Template() {
+    //     return `
+    //     <button class="btn btn-danger m-1">${this.name}</button>`
+    // }
 
 
 

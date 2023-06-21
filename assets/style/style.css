@@ -10,6 +10,10 @@
     height: 100vh;
 }
 
+.hidden {
+    visibility: hidden;
+}
+
 .poke-main {
     height: 25rem;
     width: 25rem;

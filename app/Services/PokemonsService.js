@@ -22,6 +22,9 @@ class PokemonsService {
         const res = await api.get()
         console.log("get my poke", res.data);
         appState.myPokemons = res.data.map(p => new PokeApiPokemon(p))
+        if (appState.myPokemons.length > 0) {
+            document.getElementById('my-list')?.removeAttribute('hidden')
+        }
     }
     async catchPoke() {
         let activePokemon = appState.activePokemon
